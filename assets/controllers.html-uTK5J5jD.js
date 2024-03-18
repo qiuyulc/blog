@@ -1,0 +1,1 @@
+import{_ as t,o,c as r,b as e,d as c}from"./app-0U0QUh8F.js";const a={},s=e("h2",{id:"路由",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#路由","aria-hidden":"true"},"#"),c(" 路由")],-1),n=[s];function _(d,l){return o(),r("div",null,n)}const h=t(a,[["render",_],["__file","controllers.html.vue"]]);export{h as default};
