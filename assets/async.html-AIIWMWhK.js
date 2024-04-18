@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-112ed949","path":"/training-course/lg/js/async.html","title":"JavaScript 异步编程","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1712924359000,"contributors":[{"name":"Mrlishizhen","email":"718647063@qq.com","commits":1}]},"filePathRelative":"training-course/lg/js/async.md"}');export{t as data};

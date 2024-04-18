@@ -1,0 +1,1 @@
+import{_ as a,o as t,c,b as e,d as s}from"./app-p8QBMgEe.js";const r={},n=e("h1",{id:"javascript-异步编程",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#javascript-异步编程","aria-hidden":"true"},"#"),s(" JavaScript 异步编程")],-1),o=[n];function _(d,i){return t(),c("div",null,o)}const l=a(r,[["render",_],["__file","async.html.vue"]]);export{l as default};

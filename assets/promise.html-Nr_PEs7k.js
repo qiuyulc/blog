@@ -1,0 +1,1 @@
+import{_ as o,o as r,c as s,b as e,d as t}from"./app-p8QBMgEe.js";const a={},c=e("h1",{id:"手写-promise",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#手写-promise","aria-hidden":"true"},"#"),t(" 手写 Promise")],-1),i=[c];function n(_,d){return r(),s("div",null,i)}const h=o(a,[["render",n],["__file","promise.html.vue"]]);export{h as default};

@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-2ece79ec","path":"/training-course/lg/js/promise.html","title":"手写 Promise","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1712924359000,"contributors":[{"name":"Mrlishizhen","email":"718647063@qq.com","commits":1}]},"filePathRelative":"training-course/lg/js/promise.md"}');export{e as data};
