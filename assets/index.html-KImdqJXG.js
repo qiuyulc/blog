@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-4e7f13ac","path":"/app/pixi/01-pixiapp/node_modules/vite/","title":"vite ⚡","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"app/pixi/01-pixiapp/node_modules/vite/README.md"}');export{e as data};
