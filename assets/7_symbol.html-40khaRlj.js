@@ -1,0 +1,1 @@
+import{_ as o,o as s,c as t,d as e,e as a}from"./app-ACDQQq2e.js";const c={},_=e("h1",{id:"symbol",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#symbol","aria-hidden":"true"},"#"),a(" Symbol")],-1),r=[_];function n(l,d){return s(),t("div",null,r)}const m=o(c,[["render",n],["__file","7_symbol.html.vue"]]);export{m as default};
