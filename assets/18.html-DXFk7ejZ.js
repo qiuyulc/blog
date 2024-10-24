@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-54250b52","path":"/webpack/18.html","title":"html压缩","lang":"zh-CN","frontmatter":{"title":"html压缩","description":"html压缩"},"headers":[],"git":{"updatedTime":1724157914000,"contributors":[{"name":"Mrlishizhen","email":"718647063@qq.com","commits":1}]},"filePathRelative":"webpack/18.md"}');export{t as data};

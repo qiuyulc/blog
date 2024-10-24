@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-198755ec","path":"/other/pixi/02.html","title":"Graphics的具体使用","lang":"zh-CN","frontmatter":{},"headers":[],"git":{"updatedTime":1713107552000,"contributors":[{"name":"qiuyulc","email":"qiuyulc@gmail.com","commits":1}]},"filePathRelative":"other/pixi/02.md"}');export{t as data};

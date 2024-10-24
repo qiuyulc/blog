@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-57f2119a","path":"/promise/3.html","title":"Promise链","lang":"zh-CN","frontmatter":{"title":"Promise链","description":"Promise链"},"headers":[],"git":{"updatedTime":1723362681000,"contributors":[{"name":"qiuyulc","email":"qiuyulc@gmail.com","commits":1}]},"filePathRelative":"promise/3.md"}');export{e as data};

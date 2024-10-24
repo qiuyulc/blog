@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-50bb5a14","path":"/webpack/19.html","title":"基本配置总结","lang":"zh-CN","frontmatter":{"title":"基本配置总结","description":"基本配置总结"},"headers":[],"git":{"updatedTime":1724157914000,"contributors":[{"name":"Mrlishizhen","email":"718647063@qq.com","commits":1}]},"filePathRelative":"webpack/19.md"}');export{t as data};

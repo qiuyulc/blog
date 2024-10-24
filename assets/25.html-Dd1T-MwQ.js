@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-05b52bbb","path":"/webpack/25.html","title":"总结","lang":"zh-CN","frontmatter":{"title":"总结","description":"总结"},"headers":[],"git":{"updatedTime":1725369825000,"contributors":[{"name":"qiuyulc","email":"qiuyulc@gmail.com","commits":1}]},"filePathRelative":"webpack/25.md"}');export{t as data};
