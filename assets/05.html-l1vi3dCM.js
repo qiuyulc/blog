@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-8f5cb0d8","path":"/web/css/05.html","title":"媒体查询入门","lang":"zh-CN","frontmatter":{"title":"媒体查询入门","description":"媒体查询入门"},"headers":[],"git":{"updatedTime":1732785657000,"contributors":[{"name":"qiuyulc","email":"qiuyulc@gmail.com","commits":1}]},"filePathRelative":"web/css/05.md"}');export{t as data};
