@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-66281304","path":"/webpack/6.html","title":"开发模式介绍","lang":"zh-CN","frontmatter":{"title":"开发模式介绍","description":"开发模式介绍"},"headers":[],"git":{"updatedTime":1722947190000,"contributors":[{"name":"Mrlishizhen","email":"718647063@qq.com","commits":1}]},"filePathRelative":"webpack/6.md"}');export{t as data};
