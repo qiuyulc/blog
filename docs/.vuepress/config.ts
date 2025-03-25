@@ -146,7 +146,8 @@ export default defineUserConfig({
       "/algorithm/":["/algorithm/1"],
       "/web/html":['/web/html/01','/web/html/02','/web/html/03','/web/html/04','/web/html/05','/web/html/06'],
       "/web/css":['/web/css/01','/web/css/02','/web/css/03','/web/css/04','/web/css/05','/web/css/06'],
-      "/web/js":["/web/js/01",'/web/js/02','/web/js/03','/web/js/04'],
+      "/web/js":["/web/js/01",'/web/js/02','/web/js/03','/web/js/04','/web/js/05','/web/js/06','/web/js/07','/web/js/08','/web/js/09'
+      ],
       "/webpack/": [
         "/webpack/1",
         "/webpack/2",
@@ -231,6 +232,7 @@ export default defineUserConfig({
         "/interview/react_interview/basics",
         "/interview/redux/basics",
         "/interview/react_router/basics",
+        "/interview/js/basics"
       ],
       "/actual-combat/": ["/actual-combat/node/node-reptile"],
       // "/other/pixi": [

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>indexDB</title>
+  </head>
+  <body>
+    <button id="create">创建表</button>
+    <button id="add">添加数据</button>
+    <button id="remove">删除数据</button>
+    <button id="update">查询数据</button>
+    <script>
+      /**
+       * 初始化数据库
+       *
+       *
+       */
+
+      class MyIndexedDB {
+        constructor(name, version) {
+          if (MyIndexedDB.instance) {
+            return MyIndexedDB.instance;
+          }
+          this.indexedDBName = name;
+          this.indexedDBVersion = version;
+          this.request = null;
+          this.db = null;
+          MyIndexedDB.instance = this;
+        }
+
+        //创建表
+        async addobjectStore(storeName, args) {
+          const { storeOptions = {}, storeIndex = [] } = args;
+          const db = await this.openDB();
+          if (!this.db.objectStoreNames.contains(storeName)) {
+            console.log(storeOptions);
+            const objectStore = db.createObjectStore(storeName, storeOptions);
+            if (name && key) {
+              storeIndex.forEach((item) => {
+                const {
+                  name = "",
+                  key = "",
+                  storeIndexOptions = { unique: false },
+                } = item;
+                objectStore.createIndex(name, key, storeIndexOptions);
+              });
+            }
+          }
+        }
+
+        //查询数据
+        queryData(storeName, key) {
+          return new Promise(async (resolve, reject) => {
+            const db = await this.openDB();
+            const queryTransaction = db.transaction([storeName]);
+            const queryObjectStore = queryTransaction.objectStore(storeName);
+            const query = queryObjectStore.get(key);
+
+            query.onsuccess = function (event) {
+              resolve({
+                code: 200,
+                msg: "数据查询成功",
+                data: event.target.result,
+              });
+            };
+
+            query.onerror = function (event) {
+              reject({ code: 500, msg: "数据查询失败", data: event });
+            };
+          });
+        }
+
+        //添加数据
+        addData(storeName, data) {
+          return new Promise(async (resolve, reject) => {
+            const db = await this.openDB();
+            const transaction = db.transaction([storeName], "readwrite");
+            const objectStore = transaction.objectStore(storeName);
+            if (Array.isArray(data)) {
+              data.forEach((item) => {
+                objectStore.add(item);
+              });
+            } else {
+              objectStore.add(data);
+            }
+            transaction.oncomplete = function () {
+              resolve({ code: 200, msg: "数据添加成功" });
+            };
+            transaction.onerror = function (event) {
+              reject({ code: 500, msg: "数据添加失败", event });
+            };
+          }).catch((err) => {
+            return err;
+          });
+        }
+        //修改数据
+        updateData(storeName, updatedCustomer) {
+          return new Promise((resolve, reject) => {
+            const updateTransaction = db.transaction([storeName], "readwrite");
+            const updateObjectStore = updateTransaction.objectStore(storeName);
+
+            updateObjectStore.put(updatedCustomer);
+
+            updateTransaction.oncomplete = function () {
+              resolve({ code: 200, msg: "数据更新成功" });
+            };
+            updateTransaction.onerror = function (event) {
+              reject({ code: 500, msg: "数据更新失败", event });
+            };
+          });
+        }
+        //打开数据库
+        openDB() {
+          return new Promise((resolve, reject) => {
+            if (this.db) {
+              console.log("到这了");
+              resolve(this.db);
+            }
+            if (!this.request) {
+              this.request = indexedDB.open(
+                this.indexedDBName,
+                this.indexedDBVersion
+              );
+            }
+
+            this.request.onupgradeneeded = (event) => {
+              this.db = event.target.result;
+              resolve(this.db);
+            };
+            this.request.onsuccess = (event) => {
+              this.db = event.target.result;
+              resolve(this.db);
+              console.log("数据库开启成功");
+            };
+
+            this.request.onerror = (event) => {
+              console.log("数据库打开失败");
+              reject(event);
+            };
+          });
+        }
+      }
+
+      const store = new MyIndexedDB("test", 1);
+      const create = document.querySelector("#create");
+      const add = document.querySelector("#add");
+      const remove = document.querySelector("#remove");
+      const update = document.querySelector("#update");
+      create.addEventListener("click", () => {
+        store.addobjectStore("customers", {
+          storeOptions: {
+            keyPath: "id",
+          },
+          storeIndex: {
+            name: "name",
+            key: "name",
+          },
+        });
+      });
+
+      add.addEventListener("click", async () => {
+        console.log("add");
+        const data = await store.addData("customers", [
+          { id: 1, name: "John Doe", email: "john@example.com" },
+          { id: 2, name: "Jane Doe", email: "jane@example.com" },
+        ]);
+        console.log(data, "data");
+      });
+
+      remove.addEventListener("click", () => {
+        console.log("remove");
+      });
+      update.addEventListener("click", () => {
+        console.log("update");
+      });
+    </script>
+  </body>
+</html>
