@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript面试题</title>
+  </head>
+  <body>
+    <script>
+      //   function deepClone(obj, map = new WeakMap()) {
+      //     // 处理循环引用和原始类型
+      //     if (obj === null || typeof obj !== "object") return obj;
+      //     if (map.has(obj)) return map.get(obj);
+
+      //     let clone;
+      //     // 处理特殊对象类型
+      //     if (obj instanceof Date) clone = new Date(obj);
+      //     else if (obj instanceof RegExp) clone = new RegExp(obj);
+      //     else if (Array.isArray(obj)) clone = [];
+      //     else clone = Object.create(Object.getPrototypeOf(obj));
+
+      //     map.set(obj, clone);
+      //     // 递归拷贝属性
+      //     for (let key in obj) {
+      //       if (obj.hasOwnProperty(key)) {
+      //         clone[key] = deepClone(obj[key], map);
+      //       }
+      //     }
+      //     return clone;
+      //   }
+
+      //   const obj = {
+      //     a: 1,
+      //     b: {
+      //       c: 2,
+      //     },
+      //   };
+      //   const obj1 = deepClone(obj);
+    </script>
+
+    <script>
+      function deepClone(obj, map = new WeakMap()) {
+        if (obj === null || typeof obj !== "object") return obj;
+        if (map.has(obj)) return map.get(obj);
+
+        let clone;
+        if (obj instanceof Date) clone = new Date(obj);
+        else if (obj instanceof RegExp) clone = new RegExp(obj);
+        else if (Array.isArray(obj)) clone = [];
+        else clone = Object.create(Object.getPrototypeOf(obj));
+
+        map.set(obj, clone);
+
+        for (let key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            clone[key] = deepClone(obj[key], map);
+          }
+        }
+        return clone;
+      }
+
+      const obj = {
+        a: 1,
+        b: new Date(),
+        c: /\d+/g,
+      };
+
+      const obj1 = deepClone(obj);
+      obj.a = 2;
+      console.log(obj);
+      console.log(obj1);
+    </script>
+
+    <script>
+        function deepClone(obj,map=new WeakMap()){
+            if(obj ===null ||typeof obj!=='object')return obj;
+            if(map.has(obj))return map.get(obj);
+
+            if(obj instanceof Date)clone = new Date(obj);
+            else if(obj instanceof RegExp)clone = new RegExp(obj);
+            else if(Array.isArray(obj))clone = [];
+            else clone = Object.create(Object.getPrototypeOf(obj));
+
+            map.set(obj,clone);
+
+            for(let key in obj){
+                if(obj.hasOwnProperty(key)){
+                    clone[key] = deepClone(obj[key,map]);
+                }
+            }
+
+            return clone;
+        }
+    </script>
+
+
+    <script>
+        function race(promises){
+            if(typeof promises[Symbol.iterator]!=='function'){
+                throw new TypeError('Argument must be an iterable of promises')
+            }
+
+            return new Promise((resolve,reject)=>{
+                for(let p of promises){
+                    Promise.resolve(p).then(res=>{
+                        resolve(res);
+                    }).catch(err=>{
+                        reject(err);
+                    })
+                }
+            })
+        }
+    </script>
+
+    <script>
+      // console.log(typeof null);
+
+      //原型
+
+      // [[prototype]]
+      // let animal = {
+      //     eats:true
+      // };
+
+      // let rabbit = {
+      //     __proto__:animal,
+      //     jumps:true
+      // }
+
+      // console.log(rabbit.__proto__);
+      // console.log(Object.getPrototypeOf(rabbit))
+      // Object.setPrototypeOf(rabbit,animal)
+      // console.log(Object.getPrototypeOf(rabbit))
+      // console.log(rabbit.eats)
+      // console.log(rabbit)
+
+      // 对象中有一个隐藏属性[[prototype]] 它要么是一个对象要么是null，这个属性可以通过__proto__或者Object.getPrototypeOf()来获取，也可以通过Object.setPrototypeOf()来修改
+
+      // for(let key in rabbit){
+
+      //     console.log(key);
+      // }
+      //for 。。。in循环会遍历对象所有可枚举的属性，包括其原型链上的属性，如果不想拿原型链上的属性可以使用object.hasOwnProperty()来判断
+      // for(let key in rabbit){
+      //     if(!rabbit.hasOwnProperty(key)){
+      //         console.log(key);
+      //     }
+
+      // }
+
+      // new
+      // let obj = {
+      //     age:18
+      // }
+      // let animal = {
+      //     eats:true
+      // }
+
+      // function Rabbit(name){
+      //     this.name = name;
+      // }
+
+      // Rabbit.prototype = animal;
+      // let rabbit = new Rabbit('小白');
+      // console.log(rabbit.eats);
+      // console.log(rabbit.eats);
+      // Rabbit.prototype = obj;
+      // console.log(rabbit.age);
+
+      // console.log(rabbit)
+
+      // console.log(Rabbit);
+      // const rabbit = new Rabbit('小白');
+      // console.log(rabbit)
+      //通过new Func生成的对象会有一个 constructor属性指向Func，同时Func.prototype会有一个constructor属性指向Func
+      // console.log(rabbit.constructor === Rabbit);
+      // console.log(Rabbit.prototype.constructor === Rabbit);
+      //在Func中有一个属性 prototype 它是一个对象 在通过new 调用时会用来生成 [[prototype]]属性
+
+      //   function Rabbit() {}
+      //   Rabbit.prototype = {
+      //     eats: true,
+      //   };
+
+      //   let rabbit = new Rabbit();
+
+      //   Rabbit.prototype = {} true
+      // Rabbit.prototype.eats = false false
+      // delete rabbit.eats //true
+      // delete Rabbit.prototype.eats; //undefined
+
+      //   alert(rabbit.eats); // true
+    </script>
+  </body>
+</html>
