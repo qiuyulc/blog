@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: #000;
+      }
+      svg {
+        width: 100vw;
+        height: 100vh;
+      }
+      .star {
+        transition: transform 0.3s ease-out; /* 平滑过渡效果 */
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="stars"></svg>
+    <script>
+      // 初始化参数
+      const ROWS = 9,
+        COLS = 9; // 9x9 矩阵
+      const SPACING = 80; // 星星间距
+      const MAX_OFFSET = 10; // 最大偏移量
+
+      // 生成星星矩阵
+      const svg = document.getElementById("stars");
+      for (let i = 0; i < ROWS; i++) {
+        for (let j = 0; j < COLS; j++) {
+          const star = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
+          );
+
+          // 定义星星形状（五角星路径）
+          star.setAttribute(
+            "d",
+            "M12 0 L15 9 L24 9 L16 15 L19 24 L12 18 L5 24 L8 15 L0 9 L9 9 Z"
+          );
+
+          // 初始位置居中
+          const x = window.innerWidth / 2 + (j - COLS / 2) * SPACING;
+          const y = window.innerHeight / 2 + (i - ROWS / 2) * SPACING;
+          star.setAttribute("transform", `translate(${x},${y}) scale(0.5)`);
+
+          star.classList.add("star");
+          star.style.fill = "#FFD700"; // 星星颜色
+          svg.appendChild(star);
+        }
+      }
+
+      // 监听鼠标移动事件
+      document.addEventListener("mousemove", (e) => {
+        const stars = document.querySelectorAll(".star");
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        stars.forEach((star) => {
+          // 获取星星原始坐标
+          const transform = star.getAttribute("transform");
+          const [tx, ty] = transform.match(/-?\d+/g).map(Number);
+
+          // 计算与鼠标的距离
+          const dx = mouseX - tx;
+          const dy = mouseY - ty;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          // 动态偏移公式（距离越近偏移越大）
+          const offsetX =
+            (dx / distance) *
+            Math.min(MAX_OFFSET, MAX_OFFSET * (200 / distance));
+          const offsetY =
+            (dy / distance) *
+            Math.min(MAX_OFFSET, MAX_OFFSET * (200 / distance));
+
+          // 应用偏移
+          star.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+        });
+      });
+    </script>
+  </body>
+</html>

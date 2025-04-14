@@ -1,6 +1,6 @@
-import { defineUserConfig} from "vuepress";
-import {defaultTheme} from '@vuepress/theme-default';
-import { viteBundler } from '@vuepress/bundler-vite'
+import { defineUserConfig } from "vuepress";
+import { defaultTheme } from "@vuepress/theme-default";
+import { viteBundler } from "@vuepress/bundler-vite";
 import { searchPlugin } from "@vuepress/plugin-search";
 export default defineUserConfig({
   base: "/blog/",
@@ -21,21 +21,21 @@ export default defineUserConfig({
         link: "/",
       },
       {
-        text:'前端三剑客',
-        children:[
+        text: "前端三剑客",
+        children: [
           {
-            text:'HTML',
-            link:'/web/html/01'
+            text: "HTML",
+            link: "/web/html/01",
           },
           {
-            text:'CSS',
-            link:'/web/css/01'
+            text: "CSS",
+            link: "/web/css/01",
           },
           {
-            text:'JavaScript',
-            link:'/web/js/01'
-          }
-        ]
+            text: "JavaScript",
+            link: "/web/js/01",
+          },
+        ],
       },
 
       // {
@@ -112,6 +112,18 @@ export default defineUserConfig({
             text: "ReactRouter",
             link: "/interview/react_router/basics",
           },
+          {
+            text: "事件循环",
+            link: "/interview/event_loop/basics",
+          },
+          {
+            text: "浏览器渲染流程",
+            link: "/interview/playup/basics",
+          },
+          {
+            text: "Vue项目性能优化",
+            link: "/interview/optimization/basics",
+          },
         ],
       },
       {
@@ -143,10 +155,33 @@ export default defineUserConfig({
     sidebar: {
       "/promise/": ["/promise/1", "/promise/2"],
       "/less/": ["/less/1", "/less/2"],
-      "/algorithm/":["/algorithm/1"],
-      "/web/html":['/web/html/01','/web/html/02','/web/html/03','/web/html/04','/web/html/05','/web/html/06'],
-      "/web/css":['/web/css/01','/web/css/02','/web/css/03','/web/css/04','/web/css/05','/web/css/06'],
-      "/web/js":["/web/js/01",'/web/js/02','/web/js/03','/web/js/04','/web/js/05','/web/js/06','/web/js/07','/web/js/08','/web/js/09'
+      // "/algorithm/":["/algorithm/1"],
+      "/web/html": [
+        "/web/html/01",
+        "/web/html/02",
+        "/web/html/03",
+        "/web/html/04",
+        "/web/html/05",
+        "/web/html/06",
+      ],
+      "/web/css": [
+        "/web/css/01",
+        "/web/css/02",
+        "/web/css/03",
+        "/web/css/04",
+        "/web/css/05",
+        "/web/css/06",
+      ],
+      "/web/js": [
+        "/web/js/01",
+        "/web/js/02",
+        "/web/js/03",
+        "/web/js/04",
+        "/web/js/05",
+        "/web/js/06",
+        "/web/js/07",
+        "/web/js/08",
+        "/web/js/09",
       ],
       "/webpack/": [
         "/webpack/1",
@@ -179,8 +214,8 @@ export default defineUserConfig({
         "/webpack/28",
       ],
       // "/network/":["/network/01"],
-      "/web/http":["/web/http/01"],
-      "/app/":['/app/01','/app/02'],
+      "/web/http": ["/web/http/01"],
+      "/app/": ["/app/01", "/app/02"],
       "/design_patterns/": [
         "/design_patterns/01",
         "/design_patterns/02",
@@ -232,7 +267,10 @@ export default defineUserConfig({
         "/interview/react_interview/basics",
         "/interview/redux/basics",
         "/interview/react_router/basics",
-        "/interview/js/basics"
+        "/interview/js/basics",
+        "/interview/event_loop/basics",
+        "/interview/playup/basics",
+        "/interview/optimization/basics"
       ],
       "/actual-combat/": ["/actual-combat/node/node-reptile"],
       // "/other/pixi": [

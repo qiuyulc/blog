@@ -7,106 +7,70 @@
 </head>
 <body>
     <script>
-        // let arr = new Array(1,2,3);
-        // console.log(arr);
+        // 创建数组的方法
 
-        // let arr2 = [3,4,5];
-        // console.log(arr2);
-
-        // for(let i = 0;i<arr.length;i++){
-        //     console.log(arr[i]);
-        // }
+        let arr = new Array(1,2,3);
+        console.log(arr);
+        
+        let arr1 = [1,2,3];
+        console.log(arr1);
 
 
-        // push pop shift unshift splice
+        for(let i = 0;i<arr.length;i++){
+            console.log(arr[i]);
+        }
 
-        // arr.push(4);
-        // arr.pop();
+        // 数组的方法
+        // shift() 删除数组第一个元素
+        // unshift() 在数组第一个位置添加元素
+        // pop() 删除数组最后一个元素
+        // push() 在数组最后一个位置添加元素
+        // splice() 删除或替换数组中的元素
+        // slice() 从数组中返回选定的元素
+        // sort() 对数组的元素进行排序
+        // reverse() 反转数组的元素顺序
+        // concat() 连接两个或更多的数组，并返回结果
+        // join() 把数组的所有元素放入一个字符串
+        // every() 检测数组元素中是否都通过了被提供的函数测试
+        // some() 检测数组元素中是否有通过被提供的函数测试的
+        // filter() 创建一个新数组, 其包含通过所提供函数实现的测试的所有元素
+        // map() 创建一个新数组, 其结果是该数组中的每个元素是调用一次提供的函数后的返回值
+        // forEach() 对数组的每个元素执行一次提供的函数
+        // reduce() 对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值
 
-        // arr.shift();
-        // arr.unshift(10);
-
-        // arr.splice(0,2,100);
-
-        // sort
-        // let arr = [3,2,4,6,5];
-        // arr.sort((a,b)=>{
-        //     // return a-b;//正序
-        //     return b-a;//倒序
-        // })
-        // console.log(arr);
-
-        // let arr = [{
-        //     name:'kerwin',
-        //     age:100
-        // },{
-        //     name:'tiechui',
-        //     age:18,
-        // },{
-        //     name:'xiaoming',
-        //     age:20
-        // }]
-        // arr.sort((a,b)=>{
-        //     return a.age-b.age
-        // })
-
-        // //concat
-
-        // let arr1 = [1,2,3];
-        // let arr2 = [4,5,6];
-        // console.log(arr1.concat(arr2))
-
-        //迭代方法 every some filter map forEach reduce
-
-        // let arr = [10,11,12,13];
-        // let res=arr.every(item=>item>10);
-        // let res = arr.some(item=>item>10);
-        // let res = arr.filter(item=>item>10);
-        // let res = arr.map(item=>item*2);
-        // arr.forEach((item,index)=>{
-        //     console.log(item);
-        // })
-
-        // let res = arr.reduce((total,item)=>{
-        //     return total+item;
-        // },0)
-
-        // console.log(res);
-
-
-        //迭代器对象 
-        // console.log(arr);
-
+        // 迭代器对象
         // let ite = arr[Symbol.iterator]();
-        // //原型中有一个next方法 
+        // console.log(ite.next())
+        // console.log(ite.next())
+        // console.log(ite.next())
+        // console.log(ite.next())
+
         // for(let i of arr){
-        //     console.log(i);
+        //     console.log(i)
         // }
+        console.log(arr.entries())
+        console.log(arr.values());
+        for(let [key,value] of arr.entries()){
+            console.log(key,value)
+        }
+        for(let i of arr.values()){
+            console.log(i)
+        }
+        for(let i of arr.keys()){
+            console.log(i)
+        }
 
-        // console.log(arr.entries())
+        // Array.from 将类数组对象或可迭代对象转换为数组
+        function test(){
+            console.log(Array.from(arguments))
+        }
+        test()
 
-        // for(let i of arr.entries()){
-        //     console.log(i);
-        // }
-        // for(let i of arr.values()){
-        //     console.log(i);
-        // }
-
-        //Array.from()
-
-        // function test(){
-        //     console.log(arguments);
-        //     console.log(Array.from(arguments));
-        // }
-        // console.log(test(1,2,3))
-
-        // 搜索 indexOf lastIndexOf 
-        //find findIndex findLast findLastIndex
+        //搜索
+        // indexOf 、lastIndexof
+        // find findIndex findLast findLastIndex
         // includes
-
-        let arr = [10,11,12,13];
-
-        console.log(arr.includes(10));
+        
     </script>
 </body>
 </html>

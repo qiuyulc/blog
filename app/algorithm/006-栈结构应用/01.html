@@ -6,8 +6,75 @@
     <title>栈结构</title>
   </head>
   <body>
-   <script>
-    
-   </script>
+    <script>
+      class Stack {
+        // constructor(){
+        //     this.items = [];
+        // }
+        // _items = []
+        #items = [];
+        pop() {
+          return this.#items.pop();
+        }
+
+        push(data) {
+          this.#items.push(data);
+        }
+
+        peek() {
+          return this.#items.at(-1);
+        }
+
+        isEmpty() {
+          return this.#items.length === 0;
+        }
+
+        size() {
+          return this.#items.length;
+        }
+
+        clear() {
+          this.#items = [];
+        }
+
+        toString() {
+          return this.#items.join("_");
+        }
+      }
+
+      // function convert(decNumber) {
+      //   let remStack = new Stack();
+      //   let number = decNumber;
+      //   let string = "";
+      //   while (number > 0) {
+      //     remStack.push(number % 2);
+      //     number = Math.floor(number / 2);
+      //   }
+      //   while (!remStack.isEmpty()) {
+      //     string += remStack.pop();
+      //   }
+      //   return string;
+      // }
+
+      // console.log(convert(50));
+      // console.log(stack.#items);//没有办法直接访问 但是控制台可以正常访问
+
+      function convert(decNumber, base) {
+        let remStack = new Stack();
+        let number = decNumber;
+        let string = "";
+        let baseString = "0123456789ABCDEF";
+        while (number > 0) {
+          remStack.push(number % base);
+          number = Math.floor(number / base);
+        }
+        while (!remStack.isEmpty()) {
+          string += baseString[remStack.pop()];
+        }
+        return string;
+      }
+      convert(50,16)
+      // console.log();
+    </script>
   </body>
 </html>
