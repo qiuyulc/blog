@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Queue {
+        #items = {};
+        #lowCount = 0;
+        #count = 0;
+        dequese() {
+          if (this.isEmpty()) {
+            return undefined;
+          }
+          let res = this.#items[this.#lowCount];
+          delete this.#items[this.#lowCount];
+          this.#lowCount++;
+          return res;
+        }
+
+        enquese(data) {
+          this.#items[this.#count] = data;
+          this.#count++;
+        }
+
+        front() {
+          return this.#items[this.#lowCount];
+        }
+
+        isEmpty() {
+          return this.size() === 0;
+        }
+
+        size() {
+          return this.#count - this.#lowCount;
+        }
+
+        clear() {
+          this.#items = {};
+          this.#lowCount = 0;
+          this.#count = 0;
+        }
+
+        toString() {
+            // let str = '';
+            // for(let i = this.#lowCount; i < this.#count; i++) {
+            //     str += this.#items[i] + ' ';
+            // }
+            // return str;
+            return Object.values(this.#items).toString();
+        }
+      }
+
+      let queue = new Queue();
+    </script>
+  </body>
+</html>

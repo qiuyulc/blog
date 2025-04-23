@@ -124,6 +124,10 @@ export default defineUserConfig({
             text: "Vue项目性能优化",
             link: "/interview/optimization/basics",
           },
+          {
+            text: "Vue",
+            link: "/interview/vue/basics",
+          },
         ],
       },
       {
@@ -270,7 +274,8 @@ export default defineUserConfig({
         "/interview/js/basics",
         "/interview/event_loop/basics",
         "/interview/playup/basics",
-        "/interview/optimization/basics"
+        "/interview/optimization/basics",
+        "/interview/vue/basics"
       ],
       "/actual-combat/": ["/actual-combat/node/node-reptile"],
       // "/other/pixi": [

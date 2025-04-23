@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script>
+      // 击鼓传花
+      // 多个人、击鼓次数， 执行到第几个 当前者出局，花传到下一个人，继续上面顺序。直到只剩下最后一个人。
+
+      class Queue {
+        #items = {};
+        #lowCount = 0;
+        #count = 0;
+        dequese() {
+          if (this.isEmpty()) {
+            return undefined;
+          }
+          let res = this.#items[this.#lowCount];
+          delete this.#items[this.#lowCount];
+          this.#lowCount++;
+          return res;
+        }
+
+        enquese(data) {
+          this.#items[this.#count] = data;
+          this.#count++;
+        }
+
+        front() {
+          return this.#items[this.#lowCount];
+        }
+
+        isEmpty() {
+          return this.size() === 0;
+        }
+
+        size() {
+          return this.#count - this.#lowCount;
+        }
+
+        clear() {
+          this.#items = {};
+          this.#lowCount = 0;
+          this.#count = 0;
+        }
+
+        toString() {
+          // let str = '';
+          // for(let i = this.#lowCount; i < this.#count; i++) {
+          //     str += this.#items[i] + ' ';
+          // }
+          // return str;
+          return Object.values(this.#items).toString();
+        }
+      }
+
+      // let queue = new Queue();
+
+      function game(arr, num) {
+        let queue = new Queue();
+        for (let i = 0; i < arr.length; i++) {
+          queue.enquese(arr[i]);
+        }
+
+        while (queue.size() > 1) {
+          for (let i = 0; i < num; i++) {
+            queue.enquese(queue.dequese());
+          }
+          console.log(queue.dequese(), "淘汰了");
+        }
+        console.log(queue.dequese(), "胜利了");
+        console.log(queue.toString());
+      }
+
+      game(["kerwin", "xiaoming", "tiechui", "gangdaer", "fuludunzi"], 7);
+    </script> -->
+
+    <script>
+      class Queue {
+        #items = {};
+        #lowCount = 0;
+        #count = 0;
+        //删除首个
+        dequeue() {
+          if (this.isEmpty()) {
+            return undefined;
+          }
+
+          let res = this.#items[this.#lowCount];
+          delete this.#items[this.#lowCount];
+          this.#lowCount++;
+          return res;
+        }
+        //添加到末尾
+        enqueue(data) {
+          this.#items[this.#count] = data;
+          this.#count++;
+        }
+
+        //获取第一个
+        front() {
+          return this.#items[this.#lowCount];
+        }
+
+        //判断是否为空
+        isEmpty() {
+          return this.size()===0;
+        }
+
+        //获取长度
+        size() {
+          return this.#count - this.#lowCount;
+        }
+
+        //清空
+
+        clear() {
+          this.#items = {};
+          this.#lowCount = 0;
+          this.#count = 0;
+        }
+
+        //转字符串
+        toString() {
+          return Object.values(this.#items).toString();
+        }
+      }
+      // let queue =new Queue();
+
+
+      function game(arr,num){
+        let queue = new Queue();
+        for(let i = 0;i<arr.length;i++){
+          queue.enqueue(arr[i]);
+        }
+
+        while(queue.size()>1){
+          for(let i = 0;i<num;i++){
+            queue.enqueue(queue.dequeue());
+          }
+          console.log(queue.dequeue(),"淘汰了");
+        }
+        console.log(queue.dequeue(),'胜利')
+
+      }
+
+      game(["kerwin", "xiaoming", "tiechui", "gangdaer", "fuludunzi"], 7)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //队头队尾都可以删除元素，队头队尾都可以插入元素
+      class DeQueue {
+        #items = {};
+        #lowCount = 0;
+        #count = 0;
+        removeFront() {
+          if (this.isEmpty()) {
+            return undefined;
+          }
+          let res = this.#items[this.#lowCount];
+          delete this.#items[this.#lowCount];
+          this.#lowCount++;
+          return res;
+        }
+
+        addBack(data) {
+          this.#items[this.#count] = data;
+          this.#count++;
+        }
+
+        addFront(data) {
+          //1. 如果为空
+          if (this.isEmpty()) {
+            this.addBack(data);
+          } else {
+            if (this.#lowCount > 0) {
+              this.#lowCount--;
+              this.#items[this.#lowCount] = data;
+            } else {
+              //lowCount === 0
+              for (let i = this.#count; i > 0; i--) {
+                this.#items[i] = this.#items[i - 1];
+              }
+              this.#items[0] = data;
+              this.#count++;
+            }
+          }
+        }
+        removeBack() {
+          if (this.isEmpty()) {
+            return undefined;
+          }
+          this.#count--;
+          const res = this.#items[this.#count];
+          delete this.#items[this.#count];
+          return res;
+        }
+        peekFront() {
+          return this.#items[this.#lowCount];
+        }
+        peekBack() {
+          if (this.isEmpty()) {
+            return undefined;
+          }
+          return this.#items[this.#count - 1];
+        }
+        isEmpty() {
+          return this.size() === 0;
+        }
+
+        size() {
+          return this.#count - this.#lowCount;
+        }
+
+        clear() {
+          this.#items = {};
+          this.#lowCount = 0;
+          this.#count = 0;
+        }
+
+        toString() {
+          // let str = '';
+          // for(let i = this.#lowCount; i < this.#count; i++) {
+          //     str += this.#items[i] + ' ';
+          // }
+          // return str;
+          return Object.values(this.#items).toString();
+        }
+      }
+
+      let dequeue = new DeQueue();
+    </script>
+  </body>
+</html>

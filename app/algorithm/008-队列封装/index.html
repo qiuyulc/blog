@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Queue {
+        // constructor(){
+        //     this.items = [];
+        // }
+        // _items = []
+        #items = [];
+        dequese() {
+          return this.#items.shift();
+        }
+
+        enquese(data) {
+          this.#items.push(data);
+        }
+
+        front() {
+          return this.#items.at(0);
+        }
+
+        isEmpty() {
+          return this.#items.length === 0;
+        }
+
+        size() {
+          return this.#items.length;
+        }
+
+        clear() {
+          this.#items = [];
+        }
+
+        toString() {
+          return this.#items.join("_");
+        }
+      }
+
+      let queue = new Queue();
+      
+    </script>
+  </body>
+</html>
