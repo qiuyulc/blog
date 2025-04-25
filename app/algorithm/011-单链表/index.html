@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * 单链表：每个节点只包含的一个指针，指向下一个节点
+       *
+       */
+
+      class Node {
+        constructor(element) {
+          this.element = element;
+          this.next = null;
+        }
+      }
+
+      class LinkedList {
+        constructor() {
+          this.count = 0;
+          this.head = null;
+        }
+
+        //push
+        push(element) {
+          const node = new Node(element);
+          console.log(node);
+
+          //header是空
+          if (this.head === null) {
+            this.head = node;
+          } else {
+            let current = this.head;
+            while (current.next != null) {
+              current = current.next;
+            }
+            current.next = node;
+          }
+          this.count++;
+        }
+
+        //指定位置删除
+        removeAt(index) {
+          if (index >= 0 && index < this.count) {
+            let current = this.head;
+            if (index === 0) {
+              this.head = this.head.next;
+            } else {
+              let previous;
+
+              for (let i = 0; i < index; i++) {
+                previous = current;
+                current = current.next;
+              }
+
+              previous.next = current.next;
+            }
+            this.count--;
+            return current.element;
+          }
+        }
+
+        removeAt2(index) {
+          if (index >= 0 && index < this.count) {
+            let current = this.head;
+            if (index === 0) {
+              this.head = this.head.next;
+            } else {
+              //找到当前节点的上一级
+              let previous = this.getNodeAt(index);
+              //获取到当前节点的下一级
+              current = previous.next;
+              //将上一级指向当前节点的下一级
+              previous.next = current.next;
+            }
+            this.count--;
+            return current.element;
+          }
+        }
+
+        getNodeAt(index) {
+          if (index >= 0 && index < this.count) {
+            let node = this.head;
+            for (let i = 0; i < index; i++) {
+              node = node.next;
+            }
+            return node;
+          }
+          return;
+        }
+
+        equalFn(a, b) {
+          // return a === b;
+          
+          return JSON.stringify(a) === JSON.stringify(b);
+        }
+
+        indexOf(element) {
+          let current = this.head;
+          for (let i = 0; i < this.count; i++) {
+            if (this.equalFn(element, current.element)) {
+              return i;
+            }
+            current = current.next;
+          }
+          return -1;
+        }
+
+        remove(element) {
+          const index = this.indexOf(element);
+          return this.removeAt(index);
+        }
+
+        insert(element, index) {
+          if(index>=0&&this.count>=index){
+            const node = new Node(element);
+            if(index===0){
+              const current = this.head;
+              node.next = current;
+              this.head = node;
+            }else{
+              const previous = this.getNodeAt(index - 1);
+              const current = previous.next;
+              node.next = current;
+              previous.next = node;
+            }
+            this.count++;
+            return true
+          }
+          return false;
+        }
+
+        isEmpty(){
+          return this.size();
+        }
+
+        size(){
+          return this.count;
+        }
+
+        getHead(){
+          return this.head;
+        }
+      }
+
+      const list = new LinkedList();
+    </script>
+  </body>
+</html>
