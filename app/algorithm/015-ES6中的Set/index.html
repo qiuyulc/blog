@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      
+      const myset = new Set();
+      myset.add(1);
+      myset.add(2);
+      myset.add(3);
+      myset.add(4);
+      myset.add(5);
+      myset.add(6);
+      myset.add(7);
+      myset.add(8);
+      myset.add(9);
+      myset.add(10);
+      myset.add(11);
+      console.log(myset.values());
+
+      // 集合的运算
+      /**
+       * 并集：对于给定的两个集合，返回一个包含两个集合中所有元素的新集合
+       * 交集：对于给定的两个集合，返回一个包含两个集合中共有元素的心集合
+       * 差集：对于给定的两个集合，返回一个包含所有存在于第一个集合且不存在于第二个集合的新集合
+      */
+
+      const a = new Set([1, 2, 3, 4, 5]);
+      const b = new Set([4, 5, 6, 7, 8]);
+      const union = new Set([...a, ...b]);
+      console.log(union);
+      const intersect = new Set([...a].filter(x => b.has(x)));
+      console.log(intersect);
+      const difference = new Set([...a].filter(x => !b.has(x)));
+      console.log(difference);
+    </script>
+  </body>
+</html>

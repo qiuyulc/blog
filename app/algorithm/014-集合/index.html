@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 集合
+      // 集合由一组无序且唯一（即不重复）的项组成。
+      class qiuyuSet {
+        constructor(){
+          this.items = {};
+        }
+        add(element) {
+          if(!this.has(element)){
+            this.items[element] = element;
+            return true;
+          }
+          return false;
+        }
+        delete(element) {
+          if(this.has(element)){
+            delete this.items[element];
+            return ture;
+          }
+          return false;
+        }
+        has(element) {
+          return element in this.items;
+        }
+        clear() {
+          this.items = {};
+        }
+        size() {
+          return Object.keys(this.items).length;
+        }
+        values() {
+          return Object.values(this.items);
+        }
+      }
+    </script>
+  </body>
+</html>
